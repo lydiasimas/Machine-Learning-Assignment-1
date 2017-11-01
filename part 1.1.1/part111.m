@@ -4,7 +4,7 @@
 % Part 1.1.1
 
 % read the data
-fileID = fopen('perceptrondata.csv','r');
+fileID = fopen('../perceptrondata.csv','r');
 formatSpec = '%f %f %f';
 size = [3 200];
 data = fscanf(fileID, formatSpec, size);

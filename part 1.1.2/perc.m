@@ -7,12 +7,12 @@ function y = perc(w, X)
 %   if the point lies on the hyperplane.
 
 y = w'*X;
-for i = 1:size(y,2)
+for i = 1:N
     
     if y(i) > 0
-        y(i) = 1;
+        y(i) = 1
     elseif y(i) < 0
-        y(i) = -1;
+        y(i) = -1
     end
     
 end

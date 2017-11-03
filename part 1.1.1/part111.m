@@ -46,4 +46,6 @@ ylabel('x_2')
 legend('target vector 1', 'target vector -1')
 
 
+% cleanup
 hold off
+fclose(fileID);

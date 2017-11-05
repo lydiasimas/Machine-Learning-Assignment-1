@@ -4,7 +4,12 @@ function w = percTrain(X, t, maxIts, online)
 
 flag = 1;
 [d,N] = size(X);
+t = t * [1 1 1];
 Xt = X.*t';
+size(X)
+size(t')
+size(Xt)
+pause(3)
 gamma = 1;
 w = zeros(d,1);
 
@@ -42,6 +47,6 @@ else
         end
         w = w + gamma*Dw;
     end
-
+    count
 end
 

@@ -20,7 +20,6 @@ subplot(1, 2, 1);
 scatter(class1(1,:), class1(2,:), 'filled', 'b');
 hold on
 scatter(class2(1,:), class2(2,:), 'filled', 'r');
-viscircles([0 0], [0.4])
 
 axis('equal')
 axis('tight')

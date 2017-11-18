@@ -6,7 +6,7 @@
 %% Preprocess 
 
 % read the data
-fileID = fopen('../perceptrondata.csv','r');
+fileID = fopen('../../perceptrondata.csv','r');
 formatSpec = '%f %f %f';
 N = 200; % number of points
 mySize = [3 N];
@@ -14,12 +14,12 @@ data = fscanf(fileID, formatSpec, mySize);
 
 % separate data into classes according to their target values
 col_idx = (data(3,:)>0);
-class1 = data(:, col_idx);
-class2 = data(:, ~col_idx);
+class1 = data([1:2], col_idx);
+class2 = data([1:2], ~col_idx);
 
 % transform data
-class1t = class1([1,2],:).^2;
-class2t = class2([1,2],:).^2;
+class1t = class1.^2;
+class2t = class2.^2;
 
 %% Plot data
 

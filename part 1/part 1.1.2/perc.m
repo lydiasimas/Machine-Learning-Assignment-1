@@ -1,3 +1,8 @@
+% 183.605 Machine Learning for Visual Computing
+% Assignment 1
+% Jennie Pen, Stefan Sietzen, Lydia-Fani Simantiraki
+% Part 1.1.2
+
 function y = perc(w, X)
 %PERC simulates a perceptron
 %   The first argument is the weight vector w and the second argument is a

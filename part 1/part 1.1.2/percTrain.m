@@ -1,46 +1,44 @@
+% 183.605 Machine Learning for Visual Computing
+% Assignment 1
+% Jennie Pen, Stefan Sietzen, Lydia-Fani Simantiraki
+% Part 1.1.2
+
 function w = percTrain(X, t, maxIts, online) 
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%   Perceptron Training Algorithm
 
 flag = 1;
 [d,N] = size(X);
 t = t * [1 1 1];
 Xt = X.*t';
-size(X)
-size(t')
-size(Xt)
-pause(3)
 gamma = 1;
 w = zeros(d,1);
 
 if online == true
     % online version
-    
+    count=0;
     while flag ~= 0
         
         flag = 0;
         
         for i=1:N
-            if w'*Xt(:,i) <= 0
+            if j <= 0
                 flag = 1; % found misclassified vector
                 w = w + gamma*Xt(:,i);     
             end
         end
-        
+        count=count+1;
     end
-    
+    count
 else
     % batch version
     count = 0;
     
     while flag ~= 0 && count < maxIts
-        disp('hello');
         flag = 0;
         count = count + 1;
         Dw = zeros(d,1);
         for i=1:N
             if w'*Xt(:,i) <= 0
-                disp('bye');
                 flag = 1;
                 Dw = Dw + Xt(:,i);
             end
@@ -49,4 +47,3 @@ else
     end
     count
 end
-

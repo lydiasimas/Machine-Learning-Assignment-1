@@ -1,6 +1,0 @@
-function error = computeError(X, w, t, d)
-    linspace(0, 2, d+1)
-    
-    input = X .^ linspace(0, 2, d+1)
-    error = 0;
-end

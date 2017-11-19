@@ -1,7 +1,5 @@
-function w = closedForm(training_data, d)
-    w = 0;
-    X = training_data(:, 1) .^ linspace(0, 2, d+1);
-    t = training_data(:, 2);
+function w = closedForm(X, t, d)
+    X = X .^ linspace(0, d, d+1);
     X = X';
     t = t';
     w = (X*X')^(-1)*X*t';

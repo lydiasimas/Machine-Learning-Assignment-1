@@ -74,18 +74,7 @@ if(RUN_23 == 1)
         end
         mseResult(d+1, 1) = d;
         mseResult(d+1, 2) = mserr(testObs(1), w_closed_form, testObs(2), d);       
-        bias2Result(d+1, 1) = d;
-        bias2Result(d+1, 2) = bias2(testObs(1), w_closed_form, testObs(2), d);
-        varResult(d+1, 1) = d;
-        varResult(d+1, 2) = var(testObs(1), w_closed_form, testObs(2), d);  
     end
     mseResult
-    bias2Result
-    varResult
     plot(mseResult(:, 1), mseResult(:, 2));
-    hold on
-    plot(bias2Result(:, 1), bias2Result(:, 2));
-    plot(varResult(:, 1), varResult(:, 2));
-    legend('mse','bias2', 'var')
-    hold off
 end

@@ -1,6 +1,6 @@
 % 183.605 Machine Learning for Visual Computing
 % Assignment 1
-% names
+% Jennie Pen, Stefan Sietzen, Lydia-Fani Simantiraki
 % Part 1.1.1
 
 % read the data

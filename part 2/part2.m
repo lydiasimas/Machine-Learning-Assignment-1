@@ -80,11 +80,12 @@ if(RUN_23 == 1)
         bias2Result(d+1, 1) = d;
         bias2Result(d+1, 2) = bias2(testObs(1), w_closed_form, testObs(2), d);
         varResult(d+1, 1) = d;
-        varResult(d+1, 2) = var(testObs(1), w_closed_form, testObs(2), d);  
+        varResult(d+1, 2) = variance(testObs(1), w_closed_form, testObs(2), d);
     end
     mseResult
     bias2Result
     varResult
+    figure
     plot(mseResult(:, 1), mseResult(:, 2));
     hold on
     plot(bias2Result(:, 1), bias2Result(:, 2));

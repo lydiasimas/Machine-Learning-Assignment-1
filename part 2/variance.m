@@ -1,4 +1,4 @@
-function out = var(X, w, t, d)
+function out = variance(X, w, t, d)
     x = X(:, 1) .^ linspace(0, d, d+1);
     o = x * w';
     e_o = mean(o);

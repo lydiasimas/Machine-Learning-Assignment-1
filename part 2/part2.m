@@ -25,8 +25,11 @@ X = training_data(:, 1);
 
 computeError(X, [1 -7 2], target_data, d);
 
-plot(x_values, y_values);
-plot(training_data);
+figure
+plot(x_values, y_values,'green');
+hold on
+scatter(training_data(:, 1),target_data(:,1),'blue');
+plot(training_data(:,1),training_data(:,2),'blue');
 
 w = zeros(1, d + 1);
 

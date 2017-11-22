@@ -8,6 +8,7 @@
 groupN = 7;
 d = 2;
 iterations = 10000;
+gamma = 0.001;
 
 RUN_22 = 0;
 RUN_23 = 1;
@@ -35,7 +36,7 @@ if(RUN_22 == 1)
     %gradient descent
     last_e = 0;
     for i = 1:iterations
-        w = gradientUpdate(X, target_data, w, d, 0.001);
+        w = gradientUpdate(X, target_data, w, d, gamma);
         e = computeError(X, w, target_data, d)
         ediff = e-last_e
         last_e = e;

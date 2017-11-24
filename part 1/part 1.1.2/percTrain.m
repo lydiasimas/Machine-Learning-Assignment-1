@@ -1,6 +1,6 @@
 % 183.605 Machine Learning for Visual Computing
 % Assignment 1
-% Jennie Pen, Stefan Sietzen, Lydia-Fani Simantiraki
+% Jeanny Pan, Stefan Sietzen, Lydia-Fani Simantiraki
 % Part 1.1.2
 
 function w = percTrain(X, t, maxIts, online) 

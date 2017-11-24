@@ -1,7 +1,7 @@
 % 183.605 Machine Learning for Visual Computing
 % Assignment 1
 % Jeanny Pan, Stefan Sietzen, Lydia-Fani Simantiraki
-% Part 1.1.2 online
+% Part 1.1.2 batch
 
 %% Preprocess 
 
@@ -43,25 +43,14 @@ X = data([1,2],:).^2;
 % augment
 X = [ones(1,200);X];
 t = data(3,:)';
-t = t * [1 1 1];
 
-% bring negative data to positive side
-Xt = X.*t';
+%% Run 1 out of 686 iterations of batch perceptron training
 
-gamma = 1;
-w = zeros(3,1); % initialize hyperplane
+% After testing we computed that the batch version
+% needs 686 iterations to converge.
 
-%% Run 1 out of 7 iterations of online perceptron training
-
-% After testing we computed that the online version
-% needs 7 iterations to converge.
-
-% run one iteration of online version
-for i=1:N
-    if w'*Xt(:,i) <= 0
-        w = w + gamma*Xt(:,i);     
-    end
-end
+% run one iteration of batch version
+w = percTrain(X, t, 1, false);
 
 % plot line in transformed space
 plot( [0, -w(1)/w(2)], [-w(1)/w(3), 0], ':', 'LineWidth', 2 );
@@ -73,16 +62,10 @@ Xe = sqrt(-w(1)/w(2))*cos(te);
 Ye = sqrt(-w(1)/w(3))*sin(te);
 plot(Xe, Ye, ':', 'LineWidth', 2);
 
-%% Run 3 out of 7 iterations of online perceptron training
+%% Run 343 out of 686 iterations of batch perceptron training
 
-% 2 more iterations for a total of 3
-for j=1:2
-    for i=1:N
-        if w'*Xt(:,i) <= 0
-            w = w + gamma*Xt(:,i);     
-        end
-    end
-end
+% run 343 iterations
+w = percTrain(X, t, 343, false);
 
 % plot line in transformed space
 subplot(1, 2, 2);
@@ -95,16 +78,10 @@ Xe = sqrt(-w(1)/w(2))*cos(te);
 Ye = sqrt(-w(1)/w(3))*sin(te);
 plot(Xe, Ye, ':', 'LineWidth', 2);
 
-%% Run 7 out of 7 iterations of online perceptron training
+%% Run 686 out of 686 iterations of batch perceptron training
 
-% 4 more iterations for a total of 7 needed to converge
-for j=1:4
-    for i=1:N
-        if w'*Xt(:,i) <= 0
-            w = w + gamma*Xt(:,i);     
-        end
-    end
-end
+% run until convergence
+w = percTrain(X, t, 1000, false);
 
 % plot line in transformed space
 subplot(1, 2, 2);
@@ -121,16 +98,18 @@ plot(Xe, Ye, 'LineWidth', 2);
 
 subplot(1, 2, 1);
 axis('equal')
-axis([-0.65 0.65 -0.65 0.65])
+axis('tight')
 title('Original Data')
 xlabel('x_1')
 ylabel('x_2')
-legend('target vector 1', 'target vector -1', 'one iteration', 'three iterations', 'final result')
+lgn = legend('target vector 1', 'target vector -1', 'one iteration', '343 iterations', 'final result');
+lgn.Location = 'northwest';
 
 subplot(1, 2, 2);
 axis('equal')
-axis([0 0.25 0 0.25])
+axis('tight')
 title('Transformed Data')
 xlabel('x_1')
 ylabel('x_2')
-legend('target vector 1', 'target vector -1', 'one iteration', 'three iterations', 'final result')
+lgn2 = legend('target vector 1', 'target vector -1', 'one iteration', '343 iterations', 'final result');
+lgn2.Location = 'northwest';

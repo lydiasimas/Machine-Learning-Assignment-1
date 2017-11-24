@@ -1,6 +1,6 @@
 % 183.605 Machine Learning for Visual Computing
 % Assignment 1
-% names
+% Jeanny Pan, Stefan Sietzen, Lydia-Fani Simantiraki
 % Part 2
 
 %generate data
@@ -28,18 +28,18 @@ X = training_data(:, 1);
 
 computeError(X, [1 -7 2], target_data, d);
 
-<<<<<<< HEAD
+
 figure
 plot(x_values, y_values,'green');
 hold on
 scatter(training_data(:, 1),target_data(:,1),'blue');
-plot(training_data(:,1),training_data(:,2),'blue');
-=======
+plot(training_data(:,1),training_data(:,2),'red');
+
 f_fun = figure('Name', 'functions');
 plot(x_values, y_values);
 hold on
 scatter(X, target_data);
->>>>>>> 0423f5513804686fc15763b5e47f4bb07dc1e5cb
+
 
 w = zeros(1, d + 1);
 
@@ -75,7 +75,7 @@ w_closed_form = closedForm(X, target_data, d);
 y_closed_form = w_closed_form' * x_polynomial;
 plot(x_values, y_closed_form);
 
-e_closed_form = computeError(X, w_closed_form', target_data, d)
+e_closed_form = computeError(X, w_closed_form', target_data, d);
 w_closed_form
 e
 w
@@ -109,17 +109,14 @@ if(RUN_23 == 1)
         varResult(d+1, 1) = d;
         varResult(d+1, 2) = variance(testObs(1), w_closed_form, testObs(2), d);
     end
-<<<<<<< HEAD
     mseResult
     bias2Result
     varResult
     figure
-=======
     mseResult;
     bias2Result;
     varResult;
     f_mse = figure('Name', 'mse');
->>>>>>> 0423f5513804686fc15763b5e47f4bb07dc1e5cb
     plot(mseResult(:, 1), mseResult(:, 2));
     hold on
     plot(bias2Result(:, 1), bias2Result(:, 2));

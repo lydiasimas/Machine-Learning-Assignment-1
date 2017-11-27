@@ -41,7 +41,7 @@ if(RUN_22 == 1)
     last_e = 0;
     for i = 1:iterations
         it_count = it_count + 1;
-        w = gradientUpdate(X, target_data, w, d, gamma);
+        w = gradientUpdate(X, target_data, w, d, gamma, 1);
         e = computeError(X, w, target_data, d);
         ediff = e-last_e;
         last_e = e;

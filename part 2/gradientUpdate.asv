@@ -1,11 +1,11 @@
 function w = gradientUpdate(X, t, w, d, lr, online)
 if online
-    for i = 1:size(X, 1)
+    for i = size(X)
         x = X(i, :) .^ linspace(0, 2, d+1);
         o = x * w';
-        delta = lr*(t(i, :) - o) .* x;
+        delta = lr*(t - o) .* x;
 
-        w = w + delta;
+        w = w + ddelta;
     
     end
 else

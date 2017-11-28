@@ -1,6 +1,6 @@
 % 183.605 Machine Learning for Visual Computing
 % Assignment 1
-% names
+% Jeanny Pan, Stefan Sietzen, Lydia-Fani Simantiraki
 % Part 2
 
 %generate data
@@ -28,10 +28,18 @@ X = training_data(:, 1);
 
 computeError(X, [1 -7 2], target_data, d);
 
+
+figure
+plot(x_values, y_values,'green');
+hold on
+scatter(training_data(:, 1),target_data(:,1),'blue');
+plot(training_data(:,1),training_data(:,2),'red');
+
 f_fun = figure('Name', 'functions');
 plot(x_values, y_values);
 hold on
 scatter(X, target_data);
+
 
 w = zeros(1, d + 1);
 
@@ -67,7 +75,7 @@ w_closed_form = closedForm(X, target_data, d);
 y_closed_form = w_closed_form' * x_polynomial;
 plot(x_values, y_closed_form);
 
-e_closed_form = computeError(X, w_closed_form', target_data, d)
+e_closed_form = computeError(X, w_closed_form', target_data, d);
 w_closed_form
 e
 w
@@ -99,8 +107,12 @@ if(RUN_23 == 1)
         bias2Result(d+1, 1) = d;
         bias2Result(d+1, 2) = bias2(testObs(1), w_closed_form, testObs(2), d);
         varResult(d+1, 1) = d;
-        varResult(d+1, 2) = var(testObs(1), w_closed_form, testObs(2), d);  
+        varResult(d+1, 2) = variance(testObs(1), w_closed_form, testObs(2), d);
     end
+    mseResult
+    bias2Result
+    varResult
+    figure
     mseResult;
     bias2Result;
     varResult;

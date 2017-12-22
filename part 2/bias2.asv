@@ -1,5 +1,0 @@
-function bias = bias2(X, w, t, d)
-    x = X(:, 1) .^ linspace(0, d, d+1);
-    o = x * w';
-    bias = 1/size(w, 1) * sum((t-o).^2);
-end

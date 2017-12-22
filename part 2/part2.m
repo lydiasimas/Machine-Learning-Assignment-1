@@ -12,8 +12,8 @@ d = 2;
 iterations = 2000;
 gamma = 0.001;
 
-RUN_22 = 1;
-RUN_23 = 0;
+RUN_22 = 0;
+RUN_23 = 1;
 
 x_values = linspace(0, 5, 51);
 y_values = 2.*x_values.^2 - 7.*x_values + 1;
@@ -26,8 +26,6 @@ norm_rnd = normrnd(0, 4, size(training_data, 1), 1);
 target_data = training_data(:, 2) + norm_rnd;
 X = training_data(:, 1);
 
-computeError(X, [1 -7 2], target_data, d);
-
 f_fun = figure('Name', 'functions');
 plot(x_values, y_values);
 hold on
@@ -36,6 +34,7 @@ scatter(X, target_data);
 w = zeros(1, d + 1);
 
 it_count = 0;
+
 if(RUN_22 == 1)
     %gradient descent
     last_e = 0;

@@ -18,7 +18,7 @@ end
 scatter(train_set(:, 1), train_set(:, 2),[], train_set(:, 3), 'filled');
 hold on;
 
-sigma = .2
+sigma = .05
 
 [alpha, w0, s_vectors] = rbf_trainSVM(train_set(:, 1:2), train_set(:,3), sigma);
 
@@ -62,7 +62,7 @@ mu2 = ones(N/2, 1)*[0.75, 0.75];
 mu3 = ones(N/2, 1)*[0.0, 0.0];
 mu4 = ones(N/2, 1)*[0.0, 0.6];
 
-blob1 = normrnd(mu1, 0.15, N/2, 2);
+blob1 = normrnd(mu1, 0.05, N/2, 2);
 blob2 = normrnd(mu2, 0.1, N/2, 2);
 blob3 = normrnd(mu3, 0.1, N/2, 2);
 blob4 = normrnd(mu4, 0.1, N/2, 2);
@@ -79,8 +79,8 @@ hold on;
 [alpha, w0, s_vectors] = rbf_trainSVM_soft(rbf_training(:, 1:2), rbf_training(:,3), sigma, 1);
 
 % Make classification predictions over a grid of values
-x1plot = linspace(min(rbf_training(:,1)), max(rbf_training(:,1)), 50)';
-x2plot = linspace(min(rbf_training(:,2)), max(rbf_training(:,2)), 50)';
+x1plot = linspace(min(rbf_training(:,1)), max(rbf_training(:,1)), 15)';
+x2plot = linspace(min(rbf_training(:,2)), max(rbf_training(:,2)), 15)';
 [X1, X2] = meshgrid(x1plot, x2plot);
 
 vals = zeros(size(X1));
@@ -91,8 +91,9 @@ for i = 1:size(X1, 1)
         vals(i, j) = pred;
     end
 end
+vals
 
 % Plot the SVM boundary
-contour(X1, X2, vals, [0, 0], 'Color', 'b');
+contour(X1, X2, vals, [0 0], 'Color', 'b');
 hold off;
 

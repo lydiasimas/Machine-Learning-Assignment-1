@@ -1,4 +1,4 @@
-function [alpha, w0, s_vectors] = trainSVM(X,t)
+function [alpha, w0, s_vectors] = rbf_trainSVM_soft(X,t, sigma, C)
     N = size(X, 1);
     M = size(X, 2);
     H = zeros(N);
@@ -8,11 +8,13 @@ function [alpha, w0, s_vectors] = trainSVM(X,t)
     Aeq = t';
     beq = 0;
     lb = zeros(N, 1);
-    ub = Inf(N, 1);
+    ub = ones(N, 1);
+    ub = ub * C/N;
+    
     
     for i=1:N
        for j=1:N
-          H(i, j) = t(i)*t(j)*(X(i, :)*X(j, :)');
+          H(i, j) = t(i)*t(j)*rbfkernel(X(i, :),X(j, :), sigma);
        end
     end
     alpha = quadprog(H, -f, A, b, Aeq, beq, lb, ub);

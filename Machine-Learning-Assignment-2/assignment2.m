@@ -39,6 +39,9 @@ if A11
     x = linspace(0, 1, 2);
     y = x*w(2) + w(1);
     plot(x, y);
+    axis tight;
+    
+    waitforbuttonpress;
 
     new_vec = [.6, .6];
     new_vec2 = [.3, .6];

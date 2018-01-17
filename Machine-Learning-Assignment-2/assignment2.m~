@@ -78,7 +78,6 @@ end
 
 if A12
     %non linearly separable data
-    tic
 
     mu1 = ones(N/2, 1)*[0.35, 0.15];
     mu2 = ones(N/2, 1)*[0.75, 0.75];
@@ -96,16 +95,8 @@ if A12
     blob4 = [blob4, ones(N/2, 1)*-1];
 
     rbf_training = [blob1; blob2; blob3; blob4];
-    toc
     
-%     tic
-%     b1=[normrnd(repmat([0.35 0.15],10,1),0.15),ones(10,1)];
-%     b2=[normrnd(repmat([0.75 0.75],10,1),0.1),-ones(10,1)];
-%     b3=[normrnd(repmat([0.0 0.0],10,1),0.1),-ones(10,1)];
-%     b4=[normrnd(repmat([0.0 0.6],10,1),0.1),-ones(10,1)];
-%     
-%     rbf_training=[b1;b2;b3;b4];
-%     toc
+    b[normrnd(repmat([0.35 0.15],10,1),0.15),ones(10,1)];
 
     figure
     scatter(rbf_training(:, 1), rbf_training(:, 2), [], rbf_training(:, 3), 'filled');

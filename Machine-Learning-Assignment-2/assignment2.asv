@@ -19,34 +19,67 @@ for i=1:N
     
 end
 
+<<<<<<< HEAD
 if A11
     scatter(train_set(:, 1), train_set(:, 2),[], train_set(:, 3), 'filled');
     hold on;
+=======
+scatter(train_set(:, 1), train_set(:, 2),[], train_set(:, 3), 'filled');
+hold on;
 
-    sigma = .1
+
+[alpha, w0] = trainSVM(train_set(:, 1:2), train_set(:,3));
+=======
+sigma = .2
+>>>>>>> ccfccfc25eab8e104169784169cdb56b9a7d1dc4
+
+    sigma = .2
 
     [alpha, w0, s_vectors] = trainSVM(train_set(:, 1:2), train_set(:,3));
 
+<<<<<<< HEAD
     %visualize support vectors
     scatter(s_vectors(:, 1), s_vectors(:, 2), 100, 'o');
+=======
+
+w = sum(alpha.*train_set(:, 3).*train_set(:, 1:2), 1);
+>>>>>>> ccfccfc25eab8e104169784169cdb56b9a7d1dc4
 
     w = sum(alpha.*train_set(:, 3).*train_set(:, 1:2), 1);
 
+<<<<<<< HEAD
     w = [w0 w];
     w = - w ./ w(3);
+=======
+x = linspace(0, 1, 2);
+y = x*w(2) + w(1);
+
+plot(x, y);
+
+k=rbfkernel(train_set(:, 1), train_set(:, 2),1);
+
+%plot(x, y);
+>>>>>>> ccfccfc25eab8e104169784169cdb56b9a7d1dc4
 
     x = linspace(0, 1, 2);
     y = x*w(2) + w(1);
     plot(x, y);
 
-    new_vecs = [.6, .6; 0.3, 0.6];
+    new_vec = [.6, .6];
+    new_vec2 = [.3, .6];
     
 
     y_new = predictSVM(alpha,train_set(:, 1:2), train_set(:,3),new_vec);
     y_new = sign(y_new);
-    scatter(new_vecs(1, :), new_vecs(2, :), [], y_news(:), 'filled');
-    scatter(new_vecs(1, :), new_vecs(2, :), 100, 'o');
-    scatter(new_vecs(1, :), new_vecs(2, :), 200, 'o');
+    scatter(new_vec(1), new_vec(2), [], y_new, 'filled');
+    scatter(new_vec(1), new_vec(2), 100, 'o');
+    scatter(new_vec(1), new_vec(2), 200, 'o');
+    
+    y_new2 = predictSVM(alpha,train_set(:, 1:2), train_set(:,3),new_vec2);
+    y_new2 = sign(y_new2);
+    scatter(new_vec2(1), new_vec2(2), [], y_new2, 'filled');
+    scatter(new_vec2(1), new_vec2(2), 100, 'o');
+    scatter(new_vec2(1), new_vec2(2), 200, 'o');
 
 
     % plot kernel decision boundary
@@ -88,11 +121,12 @@ if A12
 
     rbf_training = [blob1; blob2; blob3; blob4];
 
+    
     scatter(rbf_training(:, 1), rbf_training(:, 2), [], rbf_training(:, 3), 'filled');
     hold on;
-
-    [alpha, w0, s_vectors] = rbf_trainSVM_soft(rbf_training(:, 1:2), rbf_training(:,3), sigma, .5);
-    alpha
+    
+    C = 0.5;
+    [alpha, w0, s_vectors] = rbf_trainSVM_soft(rbf_training(:, 1:2), rbf_training(:,3), sigma, C);
 
     % Make classification predictions over a grid of values
     x1plot = linspace(min(rbf_training(:,1)), max(rbf_training(:,1)), 50)';

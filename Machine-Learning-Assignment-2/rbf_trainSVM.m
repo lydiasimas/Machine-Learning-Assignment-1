@@ -24,5 +24,5 @@ function [alpha, w0, s_vectors] = rbf_trainSVM(X,t, sigma)
     sv = s_vectors(1, :);
     st = s_targets(1);
     
-    w0 = st - sum(alpha.*t.*(X*sv'), 1)
+    w0 = st - sum(alpha.*t.*(X*sv'), 1);
 end
